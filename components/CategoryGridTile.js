@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontFamily: 'open-sans-bold',
-        fontSize: 19,
+        fontSize: 20,
         textAlign: 'right',
     },
     touchable: {
