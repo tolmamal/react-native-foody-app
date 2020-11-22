@@ -1,39 +1,35 @@
 import React from 'react';
-import { CATEGORIES } from "../data/mockData";
-import CategoryGridTile from '../components/CategoryGridTile';
 import {
-    View,
-    StyleSheet,
-    Text,
-    Button,
     FlatList,
-    I18nManager,
-    TouchableOpacity,
+    StyleSheet,
 } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+
 import HeaderButton from '../components/HeaderButton';
-
-I18nManager.forceRTL(false);
-I18nManager.allowRTL(false);
-
-
+import { CATEGORIES } from '../data/mockData';
+import CategoryGridTile from '../components/CategoryGridTile';
 
 const CategoriesScreen = props => {
-    const renderGridItem = (itemData) => {
+    const renderGridItem = itemData => {
         return (
             <CategoryGridTile
                 title={itemData.item.title}
                 color={itemData.item.color}
                 onSelect={() => {
-                    props.navigation.navigate({ routeName: 'CategoryMeals', params: {
+                    props.navigation.navigate({
+                        routeName: 'CategoryMeals',
+                        params: {
                             categoryId: itemData.item.id
-                        } });
-                }}/>
+                        }
+                    });
+                }}
+            />
         );
     };
 
     return (
         <FlatList
+            keyExtractor={(item, index) => item.id}
             data={CATEGORIES}
             renderItem={renderGridItem}
             numColumns={2}
@@ -41,7 +37,7 @@ const CategoriesScreen = props => {
     );
 };
 
-CategoriesScreen.navigationOptions = (navData) => {
+CategoriesScreen.navigationOptions = navData => {
     return {
         headerTitle: 'Meal Categories',
         headerLeft: (
@@ -62,8 +58,8 @@ const styles = StyleSheet.create({
     screen: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
-    },
+        alignItems: 'center'
+    }
 });
 
 export default CategoriesScreen;

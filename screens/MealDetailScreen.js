@@ -6,11 +6,11 @@ import {
     ScrollView,
     Image
 } from 'react-native';
-import { MEALS } from "../data/mockData";
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import HeaderButton from '../components/HeaderButton';
 import DefaultText from "../components/DefaultText";
 import { useSelector, useDispatch } from "react-redux";
+import { toggleFavorite } from "../store/actions/meals";
 
 const ListItem = props => {
     return (
